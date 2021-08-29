@@ -1,0 +1,9 @@
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def isPalindrome(self, A):
+        if int(str(abs(A))[::-1])==A:
+          return True
+        else:
+          return False
+         
