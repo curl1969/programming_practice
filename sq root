@@ -1,0 +1,13 @@
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def sqrt(self, A):
+        st=0
+        en=A
+        while st<=en:
+            mid=(st+en)//2
+            if mid*mid>A:
+                en=mid-1
+            else:
+                st=mid+1
+        return en
