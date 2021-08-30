@@ -1,0 +1,14 @@
+class Solution:
+    # @param x : integer
+    # @param n : integer
+    # @param d : integer
+    # @return an integer
+    def pow(self, x, n, d):
+        base = x % d
+        result = 1
+        while n>0:
+            if n%2 ==1:
+                result=(result*base) % d
+            n = n//2
+            base = (base*base)%d
+        return result%d
