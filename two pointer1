@@ -1,0 +1,28 @@
+# Given two sorted integer arrays A and B, merge B into A as one sorted array in linear time.
+
+# A = [2,3,5,7,8,11,12,13,14,15,16,22,24,25]
+# B = [1,4,6,8,9,50]
+# C = [1,2]
+# try to compare A[i] and B[j]
+def merge(A, B):
+    C = []
+    i, j = 0, 0
+    while (i < len(A) and j < len(B)):
+        if A[i] <= B[j]:
+            C.append(A[i])
+            i += 1
+
+        else:
+            C.append(B[j])
+            j += 1
+
+    if i == len(A):
+        while (j < len(B)):
+            C.append(B[j])
+            j += 1
+    if j == len(B):
+        while (i < len(A)):
+            C.append(A[i])
+            i += 1
+    return C
+print(merge([2,3,5,7,8,11,12,13,14,15,16,22,24,25],[1,4,6,8,9,50]))
