@@ -1,0 +1,33 @@
+'''
+Given a Binary Tree A containing N nodes. You need to find the path from Root to a given node B.
+No two nodes in the tree have same data values.
+You can assume that B is present in the tree A and a path always exists.
+Input 1:
+ A =
+           1
+         /   \
+        2     3
+       / \   / \
+      4   5 6   7 
+B = 5
+Output 1: [1, 2, 5]
+'''
+import math
+import sys
+import string
+from collections import Counter
+from collections import defaultdict
+from collections import deque
+
+def solve(root,target,path):
+  if root == None: return None
+  if root.val== target: return path+[root.val]
+  left = solve(root.left,target,path+[root.val])
+  if left: return left
+  right = findpath(root.right,target,path+[root.val])
+  if right: return right
+  else: return None
+  
+  def findpath(root,target):
+  return solve(root,target,[])
+  
