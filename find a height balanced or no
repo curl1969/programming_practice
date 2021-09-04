@@ -1,0 +1,22 @@
+
+import math
+import sys
+import string
+from collections import Counter
+from collections import defaultdict
+from collections import deque
+  
+'''Height-balanced binary tree : is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1. 
+Return 0 / 1 ( 0 for false, 1 for true ) for this problem'''
+
+def ifbalanced(A):
+  if A==None: return 0
+  flag = 1
+  def depth(root):
+    if root==None: return 0
+    l = depth(root.left)
+    r = depth(root.right)
+    if abs(l-r)>1: flag = 0
+    return max(l,r) + 1
+  X = depth(A)
+  return flag
