@@ -1,0 +1,15 @@
+#Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals the given sum and return list od lists
+
+def allpaths(root,target):
+  if root == None: return None
+  path = []
+  def path_sum(root,target,currpath):
+    if root.left is None and root.right is None:
+      if root.val == target:
+        return path.append(currpath+[root.val])
+    if root.left is not None:
+      path_sum(root.left,target-root.val,currpath+[root.val])
+    if root.right is not None:
+      path_sum(root.right,target-root.val,currpath+[root.val])
+  path_sum(root,target,[])
+  return path
