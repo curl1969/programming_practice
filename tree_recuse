@@ -1,0 +1,9 @@
+#Given a binary tree, return the inorder traversal of its nodes’ values i.e. root.left -> root -> root.right
+
+def printInorder(A):
+  #if root == None: return []
+  result = []
+  if root:
+    printInorder(root.left)
+    result.append(root.val)
+    printInorder(root.right)
