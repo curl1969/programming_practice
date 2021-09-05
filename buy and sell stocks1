@@ -1,0 +1,17 @@
+class Solution:# buy and sell stocks !
+    # @param A : tuple of integers
+    # @return an integer
+    def maxProfit(self, A):
+      if not A: return 0
+      maxP = 0
+      curr_min= A[0]
+      for p in A:
+        maxP= max(maxP, p-curr_min)
+        curr_min= min(p,curr_min)
+      return maxP
+    
+    
+    [5,3,5,6,78]
+    curr = 5 p = 5 maxp = 0
+    curr = 5, p =3, maxp = 0
+    curr = 3
