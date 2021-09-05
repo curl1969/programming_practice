@@ -1,0 +1,58 @@
+def lcs(X, Y): #longest common subsequence (top down approcah)
+  m=len(X)
+  n=len(Y)
+  matrix = [[-1]*(n+1) for _ in range(m+1)]
+  for i in range(m+1):
+    for j in range(n+1):
+      if i == 0 or j==0:
+        matrix[i][j] = 0
+      elif X[i-1] == Y[j-1]:
+        matrix[i][j] = matrix[i-1][j-1] + 1
+      else:
+        matrix[i][j] = max(matrix[i-1][j],matrix[i][j-1])
+    return matrix[m][n]
+  
+  def min_num(a,b): #[delete,insert]# minimum number of conversions from a --> b
+    m,n =len(a), len(b)
+    delete = m - lcs(a,b)
+    insert = n - lcs(a,b)
+    return [delete,insert]
+    
+  def LPS(a): #Longest palidromic subsequence in a given string
+      return lcs(a,a[::-1])
+    
+  #Knapsack, return the maximum value 
+  def knapsack(wt_arr,val_arr,capacity,n): #plain recursion
+    if n== 0 or capacity == 0:
+      
+      return 0
+    if wt_arr[n-1]>capacity:
+      return knapsack(wt_arr,val_arr,capacity,n-1)
+    else:
+      return max(knapsack(wt_arr,val_arr,capacity,n-1),val_arr[n-1]+knapsack(wt_arr,val_arr,capacity-wt_arr[n-1],n-1))
+    
+    
+    if (n==0 or capacity == 0): return 0 # base case, memorization
+    dp = [[-1 for i in range(capacity+1)] for j in range(n+1)]
+    if dp[n][capacity] != -1: return dp[n][capacity]
+    if wt_arr[n-1]>capacity:
+      dp[n][capacity]= knapsack(wt_arr,val_arr,capacity,n-1)
+      return dp[n][capacity]
+    else:
+      dp[n][capacity]= max(knapsack(wt_arr,val_arr,capacity,n-1),val_arr[n-1]+knapsack(wt_arr,val_arr,capacity-wt_arr[n-1],n-1))
+      return dp[n][capacity]
+    
+    
+    
+  	dp = [[-1 for i in range(capacity+1)] for j in range(n+1)] #top down dp
+    for i in range(capacity+1):
+      dp[0][i] = 0
+    for i in range(n+1):
+      dp[i][0] = 0
+    for i in range(1,n+1):
+        for j in range(1,capacity+1):
+          if wt_arr[i-1] <= j:
+            dp[i][j] = max(dp[i-1][j],val_arr[i-1] + dp[i-1][j-wt_arr[i-1]])# chaging i-1 to i in the sexond term = unbounded knapsack
+          else:
+            dp[i][j] = dp[i-1][j]
+    return dp[n][capacity]
