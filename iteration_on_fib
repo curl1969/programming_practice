@@ -1,0 +1,10 @@
+#fibanocci with tail recursion
+def fib(n,acc1=0,acc2=1):
+    if n== 0:
+        return acc2
+
+    a,b =acc1,acc2
+
+
+    return fib(n-1,b,acc2+a)
+print(fib(0))
