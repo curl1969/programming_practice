@@ -1,0 +1,10 @@
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        ans = [newInterval]
+        for interval in intervals:
+            if interval[0] > ans[-1][1]: ans.append(interval)
+            elif interval[1] < ans[-1][0]: ans.insert(len(ans)-1,interval)
+            else:
+                ans[-1][0] = min(ans[-1][0],interval[0])
+                ans[-1][1] = max(ans[-1][1],interval[1])
+        return ans
