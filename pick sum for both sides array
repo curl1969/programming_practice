@@ -1,0 +1,12 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        s = sum(A[len(A)-B:])
+        max_sum = s
+        for idx in range(B):
+            s = s - A[idx-B] + A[idx]
+            if s > max_sum:
+                max_sum = s
+        return max_sum
