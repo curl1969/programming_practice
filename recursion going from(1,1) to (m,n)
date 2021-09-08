@@ -1,0 +1,13 @@
+class Solution:
+	# @param A : list of list of integers
+	# @return an integer
+	def uniquePathsWithObstacles(self, A,p=(0,0)):
+      i,j = p
+      if i >= len(A) or j >= len(A[0]):
+        return 0
+      if A[i][j] == 1: return 0
+      if i == len(A)-1 and j == len(A[0])-1:
+        return 1
+      right = self.uniquePathsWithObstacles(A, (i , j + 1))   
+      down = self.uniquePathsWithObstacles(A, (i + 1, j))
+      return right+down
