@@ -1,0 +1,11 @@
+class Solution:
+	# @param A : tuple of integers
+	# @return an integer
+	def maxProduct(self, A):
+      assert len(A) > 0
+      ans = A[0]
+      pos,neg = 1,1
+      for a in A:
+        pos,neg = max(pos*a,neg*a,a),min(pos*a,neg*a,a)
+        ans = max(ans,pos)
+      return ans
