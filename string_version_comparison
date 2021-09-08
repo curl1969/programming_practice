@@ -1,0 +1,22 @@
+A=input("What do you want? ")
+B=input("What do you want? ")
+def compareversion(A,B):
+  verA = list(map(int,A.split(".")))
+  verB = list(map(int,B.split(".")))
+  a = len(A)
+  b = len(B)
+  for index in range(max(a,b)):
+    if index < a:
+      anum = verA[index]
+    else:
+      anum = 0
+    if index < b:
+      bnum = verB[index]
+    else:
+      bnum = 0
+    if anum > bnum:
+      return 1
+    if bnum > anum:
+      return -1
+  return 0
+print(compareversion(A,B))
