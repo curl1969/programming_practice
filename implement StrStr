@@ -1,0 +1,10 @@
+class Solution:
+	# @param A : string
+	# @param B : string
+	# @return an integer
+	def strStr(self, A, B):
+      size = len(B)
+      for i in range(len(A)):
+        if A[i:i+size] == B:
+          return i
+      return -1
