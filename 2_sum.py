@@ -10,5 +10,5 @@ def twoSum(A, k):
     elif v not in dict:
       dict[v] = i
   return []
-print(twoSum([1,23,2,3,4],25))
+print(twoSum([1,23,2,3,4],26))
 
